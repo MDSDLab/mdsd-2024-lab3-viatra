@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="ASCII"?>
+<model:Main xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="webtest.model">
+  <testClass>example</testClass>
+  <testClass>CalculatorTest</testClass>
+  <declarations xsi:type="model:Page" name="Calculator">
+    <variables name="display">
+      <value xsi:type="model:ElementExpression" tag="input" label="number display"/>
+    </variables>
+    <variables name="clear">
+      <value xsi:type="model:ElementExpression" tag="button" label="AC"/>
+    </variables>
+    <variables name="add">
+      <value xsi:type="model:ElementExpression" tag="button" label="+"/>
+    </variables>
+    <variables name="subtract">
+      <value xsi:type="model:ElementExpression" tag="button" label="-"/>
+    </variables>
+    <variables name="multiply">
+      <value xsi:type="model:ElementExpression" tag="button" label="&#xd7;"/>
+    </variables>
+    <variables name="divide">
+      <value xsi:type="model:ElementExpression" tag="button" label="/"/>
+    </variables>
+    <variables name="compute">
+      <value xsi:type="model:ElementExpression" tag="button" label="="/>
+    </variables>
+    <operations name="binaryOperation">
+      <parameters name="left"/>
+      <parameters name="op"/>
+      <parameters name="right"/>
+      <body>
+        <statements xsi:type="model:ClickStatement">
+          <element xsi:type="model:VariableExpression" variable="//@declarations.0/@variables.1"/>
+        </statements>
+        <statements xsi:type="model:FillStatement">
+          <element xsi:type="model:VariableExpression" variable="//@declarations.0/@variables.0"/>
+          <value xsi:type="model:VariableExpression" variable="//@declarations.0/@operations.0/@parameters.0"/>
+        </statements>
+        <statements xsi:type="model:ClickStatement">
+          <element xsi:type="model:VariableExpression" variable="//@declarations.0/@operations.0/@parameters.1"/>
+        </statements>
+        <statements xsi:type="model:FillStatement">
+          <element xsi:type="model:VariableExpression" variable="//@declarations.0/@variables.0"/>
+          <value xsi:type="model:VariableExpression" variable="//@declarations.0/@operations.0/@parameters.2"/>
+        </statements>
+        <statements xsi:type="model:ClickStatement">
+          <element xsi:type="model:VariableExpression" variable="//@declarations.0/@variables.6"/>
+        </statements>
+      </body>
+    </operations>
+    <operations name="multiply">
+      <parameters name="left"/>
+      <parameters name="right"/>
+      <body>
+        <statements xsi:type="model:CallStatement" operation="//@declarations.0/@operations.0">
+          <arguments xsi:type="model:VariableExpression" variable="//@declarations.0/@operations.1/@parameters.0"/>
+          <arguments xsi:type="model:VariableExpression" variable="//@declarations.0/@variables.4"/>
+          <arguments xsi:type="model:VariableExpression" variable="//@declarations.0/@operations.1/@parameters.1"/>
+        </statements>
+      </body>
+    </operations>
+  </declarations>
+  <declarations xsi:type="model:TestCase" name="mul1">
+    <body>
+      <statements xsi:type="model:OpenStatement">
+        <url xsi:type="model:StringExpression" value="https://www.calculatorsoup.com/calculators/math/basic.php"/>
+      </statements>
+      <statements xsi:type="model:ContextStatement" page="//@declarations.0">
+        <body>
+          <statements xsi:type="model:CallStatement" operation="//@declarations.0/@operations.1">
+            <arguments xsi:type="model:StringExpression" value="23"/>
+            <arguments xsi:type="model:StringExpression" value="6"/>
+          </statements>
+          <statements xsi:type="model:AssertStatement">
+            <condition xsi:type="model:IsExpression">
+              <left xsi:type="model:VariableExpression" variable="//@declarations.0/@variables.0"/>
+              <right xsi:type="model:StringExpression" value="138"/>
+            </condition>
+          </statements>
+        </body>
+      </statements>
+    </body>
+  </declarations>
+  <body>
+    <statements xsi:type="model:VariableStatement">
+      <variable name="timeout">
+        <value xsi:type="model:IntegerExpression" value="10"/>
+      </variable>
+    </statements>
+    <statements xsi:type="model:OpenStatement">
+      <url xsi:type="model:StringExpression" value="https://www.calculatorsoup.com/calculators/math/basic.php"/>
+    </statements>
+    <statements xsi:type="model:WaitStatement">
+      <condition xsi:type="model:ExistsExpression">
+        <operand xsi:type="model:ElementExpression" tag="input" label="number display"/>
+      </condition>
+      <seconds xsi:type="model:VariableExpression" variable="//@body/@statements.0/@variable"/>
+    </statements>
+    <statements xsi:type="model:ClickStatement">
+      <element xsi:type="model:ElementExpression" tag="button" label="AC"/>
+    </statements>
+    <statements xsi:type="model:FillStatement">
+      <element xsi:type="model:ElementExpression" tag="input" label="number display"/>
+      <value xsi:type="model:StringExpression" value="23"/>
+    </statements>
+    <statements xsi:type="model:ClickStatement">
+      <element xsi:type="model:ElementExpression" tag="button" label="&#xd7;"/>
+    </statements>
+    <statements xsi:type="model:FillStatement">
+      <element xsi:type="model:ElementExpression" tag="input" label="number display"/>
+      <value xsi:type="model:StringExpression" value="6"/>
+    </statements>
+    <statements xsi:type="model:ClickStatement">
+      <element xsi:type="model:ElementExpression" tag="button" label="="/>
+    </statements>
+    <statements xsi:type="model:AssertStatement">
+      <condition xsi:type="model:IsExpression">
+        <left xsi:type="model:ElementExpression" tag="input" label="number display"/>
+        <right xsi:type="model:StringExpression" value="138"/>
+      </condition>
+    </statements>
+  </body>
+</model:Main>

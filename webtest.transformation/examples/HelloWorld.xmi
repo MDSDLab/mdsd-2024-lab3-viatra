@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<model:Main xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="webtest.model">
+  <testClass>example</testClass>
+  <testClass>HelloWorld</testClass>
+  <declarations xsi:type="model:TestCase" name="SayHelloTest">
+    <body>
+      <statements xsi:type="model:PrintStatement">
+        <values xsi:type="model:StringExpression" value="Hello World!"/>
+      </statements>
+    </body>
+  </declarations>
+  <body/>
+</model:Main>

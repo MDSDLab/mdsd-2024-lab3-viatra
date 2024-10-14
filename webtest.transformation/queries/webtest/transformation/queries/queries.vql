@@ -1,0 +1,7 @@
+package webtest.transformation.queries
+
+import epackage "webtest.model"
+
+pattern simpleQuery(variable : Variable) {
+    Variable(variable);
+}
